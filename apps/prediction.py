@@ -32,10 +32,12 @@ layout = html.Div([
                     dbc.Col([
                         dbc.Card([
                             dbc.CardBody([
-                                dcc.Graph(id='o_p_graph',figure={})
+                                dcc.Graph(id='o_p_graph',figure=go.Figure({
+
+                                }))
                             ]),
                         ],style={'background-color':'#CCD7EA'}),
-                    ]),
+                    ],width={'size':8}),
                 ]),
             ]),
 ])
@@ -227,18 +229,19 @@ def model_load1(value):
     figure = make_subplots(shared_yaxes=True,shared_xaxes=True,vertical_spacing=0.0,rows=1,cols=1)
 
     figure.append_trace(go.Scatter(
+                            name = 'Actual Values',
                             x = valid['date'],
                             y = valid['close']
                                     )
            , row=1,col=1)
 
     figure.append_trace(go.Scatter(
+                            name = 'Predicted values',
                             x = valid['date'],
                             y = valid['prediction']
                                     )
            , row=1,col=1)
 
 
-
-    figure.show()
+    figure.update_layout(xaxis_rangeslider_visible=False,paper_bgcolor='#CCD7EA',plot_bgcolor = '#CCD7EA')
     return  figure
