@@ -14,6 +14,8 @@ from keras.layers import Dense,LSTM
 import keras
 import pandas as pd
 import numpy as np
+import plotly.graph_objs as go
+from plotly.subplots import make_subplots
 import math
 
 
@@ -30,7 +32,7 @@ layout = html.Div([
                     dbc.Col([
                         dbc.Card([
                             dbc.CardBody([
-                                html.Div(id='o_p_graph')
+                                dcc.Graph(id='o_p_graph',figure={})
                             ]),
                         ],style={'background-color':'#CCD7EA'}),
                     ]),
@@ -130,10 +132,10 @@ def model_load(value):
 
 
 
-@app.callback(Output(component_id="o_p_graph",component_property="children")
+@app.callback(Output(component_id="o_p_graph",component_property="figure")
             ,Input(component_id="search_box",component_property="value"))
 
-def model_load(value):
+def model_load1(value):
     apple_model = keras.models.load_model(r".\machinelearning_models\apple_model.h5")
     amd_model = keras.models.load_model(r".\machinelearning_models\amd_model.h5")
     facebook_model = keras.models.load_model(r".\machinelearning_models\facebook_model.h5")
@@ -208,14 +210,35 @@ def model_load(value):
 
     valid = data[training_data_len:]
     valid["prediction"] = predictions
+    df_date = pd.read_excel(f".\\data\\{value}.xlsx")
+    df_date = df_date.filter(['date'])
+    df_date = df_date[training_data_len:]
+    valid['date'] = df_date
     df_c = len(df)
     _ = len(valid)
     c15 = _ - 15
     valid = valid[c15:]
-    df_cal = df_c - 15
-    dff = df[df_cal:]
-    valid['date'] = dff['date'].dt.date
     print("all models loaded")
-    return  html.Div([
 
-    ])
+    print('valid columns',valid.columns)
+
+    df1 = pd.read_excel(f".\\data\\{value}.xlsx")
+
+    figure = make_subplots(shared_yaxes=True,shared_xaxes=True,vertical_spacing=0.0,rows=1,cols=1)
+
+    figure.append_trace(go.Scatter(
+                            x = valid['date'],
+                            y = valid['close']
+                                    )
+           , row=1,col=1)
+
+    figure.append_trace(go.Scatter(
+                            x = valid['date'],
+                            y = valid['prediction']
+                                    )
+           , row=1,col=1)
+
+
+
+    figure.show()
+    return  figure
