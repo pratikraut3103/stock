@@ -142,7 +142,7 @@ class analysis():
 
     def correlations(self,value = 'close'):
         '''
-             This function is ued to find the correlations
+             This function is used to find the correlations
         '''
         self.df.drop(columns=['adjusted_close','volume','low','high'],inplace = True)
         correlations = self.df.corr()
