@@ -141,6 +141,9 @@ class analysis():
 
 
     def correlations(self,value = 'close'):
+        '''
+             This function is ued to find the correlations
+        '''
         self.df.drop(columns=['adjusted_close','volume','low','high'],inplace = True)
         correlations = self.df.corr()
         correlations.drop(['open',value,'upperband','middleband', 'lowerband','macdhist', 'slowk', 'slowd', 'fastk', 'fastd'],inplace=True)
