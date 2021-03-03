@@ -32,9 +32,9 @@ layout = html.Div([
                     dbc.Col([
                         dbc.Card([
                             dbc.CardBody([
-                                dcc.Graph(id='o_p_graph',figure=go.Figure({
+                                dcc.Loading(children=[dcc.Graph(id='o_p_graph',figure=go.Figure({
 
-                                }))
+                                }))],type='graph',fullscreen=True),
                             ]),
                         ],style={'background-color':'#CCD7EA'}),
                     ],width={'size':8}),
