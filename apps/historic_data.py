@@ -252,6 +252,18 @@ def hist_graph_update(value,start_date,end_date,custvalues,ddvalues):
         count = count + 1
     if  'RSI' in ddvalues:
         count = count + 1
+    if 'AROONOSC' in ddvalues:
+        count = count + 1
+    if 'MA' in ddvalues:
+        count = count + 1
+    if 'WMA' in ddvalues:
+        count = count +1
+    if 'CCI' in ddvalues:
+        count = count +1
+    if 'CMO' in ddvalues:
+        count = count +1
+    if 'T3' in ddvalues:
+        count = count +1
 
 
     figure = make_subplots(shared_xaxes=True,vertical_spacing=0.0,rows=count,cols=1)
@@ -284,6 +296,79 @@ def hist_graph_update(value,start_date,end_date,custvalues,ddvalues):
                             name="macd",
                             x= df_['date'],
                             y=df_['macd'],
+                        )
+        ,row=i,col=1)
+        figure.update_xaxes(showgrid=False,row=i,col=1)
+        figure.update_yaxes(showgrid=False,row=i,col=1)
+        i += 1
+
+    if "AROONOSC" in ddvalues:
+        figure.append_trace(
+                        go.Scatter(
+                            name="aroonosc",
+                            x= df_['date'],
+                            y=df_['aroonosc'],
+                        )
+        ,row=i,col=1)
+        figure.update_xaxes(showgrid=False,row=i,col=1)
+        figure.update_yaxes(showgrid=False,row=i,col=1)
+        i += 1
+
+
+    if "MA" in ddvalues:
+        figure.append_trace(
+                        go.Scatter(
+                            name="ma",
+                            x= df_['date'],
+                            y=df_['ma'],
+                        )
+        ,row=i,col=1)
+        figure.update_xaxes(showgrid=False,row=i,col=1)
+        figure.update_yaxes(showgrid=False,row=i,col=1)
+        i += 1
+
+    if "T3" in ddvalues:
+        figure.append_trace(
+                        go.Scatter(
+                            name="t3",
+                            x= df_['date'],
+                            y=df_['t3'],
+                        )
+        ,row=i,col=1)
+        figure.update_xaxes(showgrid=False,row=i,col=1)
+        figure.update_yaxes(showgrid=False,row=i,col=1)
+        i += 1
+
+    if "WMA" in ddvalues:
+        figure.append_trace(
+                        go.Scatter(
+                            name="wma",
+                            x= df_['date'],
+                            y=df_['wma'],
+                        )
+        ,row=i,col=1)
+        figure.update_xaxes(showgrid=False,row=i,col=1)
+        figure.update_yaxes(showgrid=False,row=i,col=1)
+        i += 1
+
+    if "CCI" in ddvalues:
+        figure.append_trace(
+                        go.Scatter(
+                            name="cci",
+                            x= df_['date'],
+                            y=df_['cci'],
+                        )
+        ,row=i,col=1)
+        figure.update_xaxes(showgrid=False,row=i,col=1)
+        figure.update_yaxes(showgrid=False,row=i,col=1)
+        i += 1
+
+    if "CMO" in ddvalues:
+        figure.append_trace(
+                        go.Scatter(
+                            name="cmo",
+                            x= df_['date'],
+                            y=df_['cmo'],
                         )
         ,row=i,col=1)
         figure.update_xaxes(showgrid=False,row=i,col=1)
@@ -343,10 +428,10 @@ def hist_graph_update(value,start_date,end_date,custvalues,ddvalues):
 
     figure.update_xaxes(rangeslider={'visible':False}, row=a, col=1)
 
-    size_def = 5 - count
+    size_def = 10 - count
 
 
-    figure.update_layout(height=1200/size_def,xaxis_rangeslider_visible=False,paper_bgcolor='#CCD7EA',plot_bgcolor = '#CCD7EA')
+    figure.update_layout(height=5200/size_def,xaxis_rangeslider_visible=False,paper_bgcolor='#CCD7EA',plot_bgcolor = '#CCD7EA')
     figure.update_layout(
         xaxis=dict(
             rangeselector=dict(
