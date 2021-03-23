@@ -20,12 +20,29 @@ layout = html.Div([
                                 ])
 
                             ])
-                        ],style={'background-color':'#CCD7EA'})
+                        ],style={'background-color':'#CCD7EA','width':"320px"})
                     ]),
+                    html.Br(),
                     dbc.Row([
+                        dbc.Card([
+                            dbc.CardBody([
+                                dbc.Row([
+                                    html.H3("Instutional Holder")
+                                ]),
+                                dbc.Row([
+                                    html.Div([],id = "Holders")
+                                ])
 
+                            ])
+                        ],style={'background-color':'#CCD7EA'})
                     ])
-                ])
+                ]),
+
+                dbc.Col([
+                    dbc.Row([
+                        html.Div([],id = "book"])
+                    ])
+                ]),
             ])
 ])
 
@@ -46,4 +63,20 @@ def recom(value):
     df = d.gat_recommendation()
     df = df.filter(["Firm","To Grade"])
     df = df.head(5)
+    return dbc.Table.from_dataframe(df,style={'font-family':'nudista-web",Helvetica,Arial,sans-serif','color':'black'})
+
+@app.callback(Output(component_id='Holders',component_property='children'),
+            [Input(component_id='search_box',component_property='value')])
+def recom(value):
+    d = Data(value)
+    df = d.gat_institionalHolder()
+    df = df.filter(["Holder","Shares"])
+    df = df.head(5)
+    return dbc.Table.from_dataframe(df,style={'font-family':'nudista-web",Helvetica,Arial,sans-serif','color':'black'})
+
+@app.callback(Output(component_id='Holders',component_property='children'),
+            [Input(component_id='search_box',component_property='value')])
+def recom(value):
+    d = Data(value)
+    df = d.option_chain('2021-03-26')
     return dbc.Table.from_dataframe(df,style={'font-family':'nudista-web",Helvetica,Arial,sans-serif','color':'black'})
