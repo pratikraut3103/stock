@@ -7,7 +7,7 @@ import dash_daq as daq
 from dash.dependencies import Input,Output
 import time
 from app import app
-from apps import visualization,about_tech,about,historic_data,prediction
+from apps import visualization,about_tech,about,historic_data,prediction,analysis
 PLOTLY_LOGO = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0FcNqYbJ7ML8oWcV-NQHIREj5y2amoIZLqQ&usqp=CAU"
 
 app.title = 'Stock Dashboard'
@@ -22,6 +22,8 @@ app.layout = html.Div([
                         dbc.NavItem(dbc.NavLink("Historic", href="/historic_data",style={'font-family':'nudista-web",Helvetica,Arial,sans-serif','color':'#000000'})),
                         dbc.NavItem(html.A(style={"font-size":"25px","text-align":"center","padding-right":"10px","padding-left":"10px"})),
                         dbc.NavItem(dbc.NavLink("About Technical Indicators", href="/technical_indicators",style={'font-family':'nudista-web",Helvetica,Arial,sans-serif','color':'#000000'})),
+                        dbc.NavItem(html.A(style={"font-size":"25px","text-align":"center","padding-right":"10px","padding-left":"10px"})),
+                        dbc.NavItem(dbc.NavLink("Analysis", href="/analysis",style={'font-family':'nudista-web",Helvetica,Arial,sans-serif','color':'#000000'})),
                         dbc.NavItem(html.A(style={"font-size":"25px","text-align":"center","padding-right":"10px","padding-left":"10px"})),
                     ],brand='Agilrio',brand_style={'font-size':'25px','font-family':'nudista-web",Helvetica,Arial,sans-serif'},expand='lg',fluid = True,className='purple-gradient',style={'font-size':'25px','font-family':'nudista-web",Helvetica,Arial,sans-serif','color':'#000000'}),
                 ]),
@@ -66,6 +68,8 @@ def render_page_content(pathname):
         return html.P("This is about")
     elif pathname == "/technical_indicators":
         return about_tech.layout
+    elif pathname == "/analysis":
+        return analysis.layout
 
 
     else:
