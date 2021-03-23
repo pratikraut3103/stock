@@ -1,3 +1,4 @@
+import pandas as pd
 import dash
 import dash_html_components as html
 import dash_core_components as dcc
@@ -40,7 +41,7 @@ layout = html.Div([
 
                 dbc.Col([
                     dbc.Row([
-                        html.Div([],id = "book"])
+                        html.Div([],id = "book")
                     ])
                 ]),
             ])
@@ -55,6 +56,11 @@ class Data:
     def gat_institionalHolder(self):
         inst = self.Ticker.institutional_holders
         return inst
+    def gat_option(self):
+        opt = self.Ticker.option_chain('2021-03-26')
+        return opt
+
+
 
 @app.callback(Output(component_id='recommendations',component_property='children'),
             [Input(component_id='search_box',component_property='value')])
@@ -74,9 +80,12 @@ def recom(value):
     df = df.head(5)
     return dbc.Table.from_dataframe(df,style={'font-family':'nudista-web",Helvetica,Arial,sans-serif','color':'black'})
 
-@app.callback(Output(component_id='Holders',component_property='children'),
+@app.callback(Output(component_id='book',component_property='children'),
             [Input(component_id='search_box',component_property='value')])
 def recom(value):
     d = Data(value)
-    df = d.option_chain('2021-03-26')
+    df = d.gat_option()
+    df = pd.DataFrame(df)
+    print(df)
+    print(type(df))
     return dbc.Table.from_dataframe(df,style={'font-family':'nudista-web",Helvetica,Arial,sans-serif','color':'black'})
