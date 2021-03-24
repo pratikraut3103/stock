@@ -49,10 +49,11 @@ layout = html.Div([
                                         start_date_placeholder_text="Start Period",
                                         end_date_placeholder_text="End Period",
                                         calendar_orientation='horizontal',
+                                        id= "date_picker"
                                     )
                                 ]),
                                 dbc.Row([
-                                    dbc.Button
+                                    dbc.Button("Download",color="primary",id="download_button"),
                                 ]),
                             ])
                         ],style={'background-color':'#CCD7EA'})
@@ -121,6 +122,9 @@ class Data:
     def gat_option(self):
         opt = self.Ticker.option_chain('2021-03-26')
         return opt
+    def downlod(self,start,end,ticker):
+        dataa = yf.downlod(ticker,start=start,end=end)
+        return dataa
 
 
 
@@ -178,3 +182,13 @@ def open_toast(n):
     if n=="pe":
         return True
     return False
+@app.callback(
+    [Input(component_id='search_box',component_property='value'),
+    Input(component_id="download_button",component_property="n_clicks"),
+    Input(component_id="date_picker",component_property= "start_date"),
+    Input(component_id="date_picker",component_property= "end_date")])
+
+def take_values(ticker,click,start,end):
+    d= Data()
+    df = d.downlod(start, end, ticker)
+    df.to_excel("downlod.xlsx")
