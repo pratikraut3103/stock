@@ -1,3 +1,7 @@
+import dash
+import dash_html_components as html
+import dash_core_components as dcc
+import dash_bootstrap_components as dbc
 import pandas as pd
 import dash
 import dash_html_components as html
@@ -7,74 +11,94 @@ import yfinance as yf
 from dash.dependencies import Output,Input
 from app import app
 
-layout = html.Div([
-            dbc.Row([
-                dbc.Col([
-                    dbc.Row([
-                        dbc.Card([
-                            dbc.CardBody([
-                                dbc.Row([
-                                    html.H3("Recommendations")
-                                ]),
-                                dbc.Row([
-                                    html.Div([],id = "recommendations")
-                                ])
 
-                            ])
-                        ],style={'background-color':'#CCD7EA',"width":"100%"})
-                    ]),
-                    html.Br(),
-                    dbc.Row([
-                        dbc.Card([
-                            dbc.CardBody([
-                                dbc.Row([
-                                    html.H3("Instutional Holder")
-                                ]),
-                                dbc.Row([
-                                    html.Div([],id = "Holders")
-                                ])
 
-                            ])
-                        ],style={'background-color':'#CCD7EA'})
+
+
+
+
+layout= html.Div(
+                dbc.Row([
+                    dbc.Col([
+
+
+                       dbc.Row([
+                            dbc.Col([
+                                dbc.Card([
+                                dbc.CardBody([
+                                    dbc.Row([
+                                        html.H3("Recommendations")
+                                    ]),
+                                    dbc.Row([
+                                        html.Div([],id = "recommendations")
+                                    ])
+
+                                ])
+                            ],style={'background-color':'#CCD7EA','width':'300px'}),
+                        ])
                     ]),
 
+
+
+
                     html.Br(),
                     dbc.Row([
-                        dbc.Card([
-                            dbc.CardBody([
-                                dbc.Row([
-                                    html.H3(" Download Historic Data"),
-                                    html.Br(),
-                                    dcc.DatePickerRange(
-                                        start_date_placeholder_text="Start Period",
-                                        end_date_placeholder_text="End Period",
-                                        calendar_orientation='horizontal',
-                                        id= "date_picker"
-                                    )
-                                ]),
-                                dbc.Row([
-                                    dbc.Button("Download",color="primary",id="download_button"),
-                                    dbc.Toast(
-                                        "stat value is none",
-                                        id="start_none",
-                                        header="Call Values",
-                                        is_open=False,
-                                        dismissable=True,
-                                        icon="danger",
-                                        # top: 66 positions the toast below the navbar
-                                        style={"position": "fixed", "top": 66, "right": 10, "width": 350},
-                                    )
-                                ]),
-                            ])
-                        ],style={'background-color':'#CCD7EA'})
+                        dbc.Col([
+                            dbc.Card([
+                                dbc.CardBody([
+                                    dbc.Row([
+                                        html.H3("Instutional Holder")
+                                    ]),
+                                    dbc.Row([
+                                        html.Div([],id = "Holders")
+                                    ])
+
+                                ])
+                            ],style={'background-color':'#CCD7EA','width':'300px'})
+                        ])
+                    ]),
+
+
+
+
+
+                    html.Br(),
+                    dbc.Row([
+                        dbc.Col([
+                            dbc.Card([
+                                dbc.CardBody([
+                                    dbc.Row([
+                                        html.H3(" Download Historic Data"),
+                                        html.Br(),
+                                        dcc.DatePickerRange(
+                                            start_date_placeholder_text="Start Period",
+                                            end_date_placeholder_text="End Period",
+                                            calendar_orientation='horizontal',
+                                            id= "date_picker"
+                                        )
+                                    ]),
+                                    dbc.Row([
+                                        dbc.Button("Download",color="primary",id="download_button"),
+                                        dbc.Toast(
+                                            "stat value is none",
+                                            id="start_none",
+                                            header="Call Values",
+                                            is_open=False,
+                                            dismissable=True,
+                                            icon="danger",
+                                            # top: 66 positions the toast below the navbar
+                                            style={"position": "fixed", "top": 66, "right": 10, "width": 350},
+                                        )
+                                    ]),
+                                ])
+                            ],style={'background-color':'#CCD7EA','width':'300px'})
+                        ])
                     ])
-                ],width={"size":3}),
 
-                html.Br(),
 
-                dbc.Col([
-                    dbc.Row([
-                        html.Div([
+                    ],width={"size":2}),
+                    dbc.Col([
+ html.Div([
                             dbc.Card([
                                 dbc.CardBody([
                                     dbc.Row([
@@ -116,11 +140,10 @@ layout = html.Div([
                                     ]),
                                 ])
                             ],style={'background-color':'#CCD7EA'}),
-                        ])
-                    ])
-                ],width={"size":9,"offset":3}),
-            ],no_gutters=False)
-])
+                        ])                    ],width={"offset":1})
+                ])
+            )
+
 
 class Data:
     def __init__(self,ticker):
