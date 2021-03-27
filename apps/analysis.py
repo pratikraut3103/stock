@@ -54,6 +54,16 @@ layout = html.Div([
                                 ]),
                                 dbc.Row([
                                     dbc.Button("Download",color="primary",id="download_button"),
+                                    dbc.Toast(
+                                        "stat value is none",
+                                        id="start_none",
+                                        header="Call Values",
+                                        is_open=False,
+                                        dismissable=True,
+                                        icon="danger",
+                                        # top: 66 positions the toast below the navbar
+                                        style={"position": "fixed", "top": 66, "right": 10, "width": 350},
+                                    )
                                 ]),
                             ])
                         ],style={'background-color':'#CCD7EA'})
@@ -101,6 +111,7 @@ layout = html.Div([
                                 ]),
                                 dbc.Row([
                                     html.Div([],id = "book"),
+                                    html.Div([],id = "out")
                                 ])
 
                             ])
@@ -122,9 +133,9 @@ class Data:
     def gat_option(self):
         opt = self.Ticker.option_chain('2021-03-26')
         return opt
-    def downlod(self,start,end,ticker):
-        dataa = yf.downlod(ticker,start=start,end=end)
-        return dataa
+    # def downlod(self,start,end,ticker):
+    #     dataa = yf.downlod(ticker,start=start,end=end)
+    #     return dataa
 
 
 
@@ -183,12 +194,18 @@ def open_toast(n):
         return True
     return False
 @app.callback(
+    [Output(component_id = "start_none",component_property="is_open"),
+    Output(component_id = 'out',component_property="children")],
     [Input(component_id='search_box',component_property='value'),
     Input(component_id="download_button",component_property="n_clicks"),
     Input(component_id="date_picker",component_property= "start_date"),
     Input(component_id="date_picker",component_property= "end_date")])
 
 def take_values(ticker,click,start,end):
-    d= Data()
-    df = d.downlod(start, end, ticker)
-    df.to_excel("downlod.xlsx")
+    if start != None:
+        df = yf.download(ticker,start, end)
+        print(df)
+        df.to_excel("downlod.xlsx")
+        print("created")
+    else:
+        return True , None
