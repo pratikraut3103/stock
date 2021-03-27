@@ -80,9 +80,9 @@ layout= html.Div(
                                     dbc.Row([
                                         dbc.Button("Download",color="primary",id="download_button"),
                                         dbc.Toast(
-                                            "stat value is none",
+                                            "start value is none",
                                             id="start_none",
-                                            header="Call Values",
+                                            header="Start Values None",
                                             is_open=False,
                                             dismissable=True,
                                             icon="danger",
