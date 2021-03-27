@@ -74,50 +74,51 @@ layout = html.Div([
 
                 dbc.Col([
                     dbc.Row([
-                        dbc.Card([
-                            dbc.CardBody([
-                                dbc.Row([
-                                    html.Div([
-                                        dcc.RadioItems(
-                                            id='book_select',
-                                            options=[
-                                                {'label': 'Call', 'value': 'ce'},
-                                                {'label': 'Puts', 'value': 'pe'},
-                                            ],
-                                            value='ce',
-                                            labelStyle={'display': 'inline-block',"margin-right": "10px"}
-                                        ),
-                                        dbc.Toast(
-                                            "Call selected",
-                                            id="call_toast",
-                                            header="Call Values",
-                                            is_open=False,
-                                            dismissable=True,
-                                            icon="danger",
-                                            # top: 66 positions the toast below the navbar
-                                            style={"position": "fixed", "top": 66, "right": 10, "width": 350},
-                                        ),
-                                        dbc.Toast(
-                                            "Put selected",
-                                            id="put_toast",
-                                            header="Put Values",
-                                            is_open=False,
-                                            dismissable=True,
-                                            icon="danger",
-                                            # top: 66 positions the toast below the navbar
-                                            style={"position": "fixed", "top": 66, "right": 10, "width": 350},
-                                        )
+                        html.Div([
+                            dbc.Card([
+                                dbc.CardBody([
+                                    dbc.Row([
+                                        html.Div([
+                                            dcc.RadioItems(
+                                                id='book_select',
+                                                options=[
+                                                    {'label': 'Call', 'value': 'ce'},
+                                                    {'label': 'Puts', 'value': 'pe'},
+                                                ],
+                                                value='ce',
+                                                labelStyle={'display': 'inline-block',"margin-right": "10px"}
+                                            ),
+                                            dbc.Toast(
+                                                "Call selected",
+                                                id="call_toast",
+                                                header="Call Values",
+                                                is_open=False,
+                                                dismissable=True,
+                                                icon="danger",
+                                                # top: 66 positions the toast below the navbar
+                                                style={"position": "fixed", "top": 66, "right": 10, "width": 350},
+                                            ),
+                                            dbc.Toast(
+                                                "Put selected",
+                                                id="put_toast",
+                                                header="Put Values",
+                                                is_open=False,
+                                                dismissable=True,
+                                                icon="danger",
+                                                # top: 66 positions the toast below the navbar
+                                                style={"position": "fixed", "top": 66, "right": 10, "width": 350},
+                                            )
+                                        ]),
                                     ]),
-                                ]),
-                                dbc.Row([
-                                    html.Div([],id = "book"),
-                                    html.Div([],id = "out")
+                                    dbc.Row([
+                                        html.Div([],id = "book"),
+                                        html.Div([],id = "out")
+                                    ]),
                                 ])
-
-                            ])
-                        ],style={'background-color':'#CCD7EA'})
+                            ],style={'background-color':'#CCD7EA'}),
+                        ])
                     ])
-                ],width={"size":9}),
+                ],width={"size":9,"offset":3}),
             ],no_gutters=False)
 ])
 
@@ -131,7 +132,7 @@ class Data:
         inst = self.Ticker.institutional_holders
         return inst
     def gat_option(self):
-        opt = self.Ticker.option_chain('2021-03-26')
+        opt = self.Ticker.option_chain('2021-04-01')
         return opt
     # def downlod(self,start,end,ticker):
     #     dataa = yf.downlod(ticker,start=start,end=end)
