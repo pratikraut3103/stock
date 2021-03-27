@@ -113,9 +113,9 @@ layout= html.Div(
                                                 labelStyle={'display': 'inline-block',"margin-right": "10px"}
                                             ),
                                             dbc.Toast(
-                                                "Call selected",
+                                                "Calls selected",
                                                 id="call_toast",
-                                                header="Call Values",
+                                                header="Calls Values",
                                                 is_open=False,
                                                 dismissable=True,
                                                 icon="danger",
