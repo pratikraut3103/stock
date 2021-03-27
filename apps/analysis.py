@@ -106,7 +106,7 @@ layout= html.Div(
                                             dcc.RadioItems(
                                                 id='book_select',
                                                 options=[
-                                                    {'label': 'Call', 'value': 'ce'},
+                                                    {'label': 'Calls', 'value': 'ce'},
                                                     {'label': 'Puts', 'value': 'pe'},
                                                 ],
                                                 value='ce',
