@@ -23,7 +23,7 @@ app.layout = html.Div([
                         dbc.NavItem(html.A(style={"font-size":"25px","text-align":"center","padding-right":"10px","padding-left":"10px"})),
                         dbc.NavItem(dbc.NavLink("About Technical Indicators", href="/technical_indicators",style={'font-family':'nudista-web",Helvetica,Arial,sans-serif','color':'#000000'})),
                         dbc.NavItem(html.A(style={"font-size":"25px","text-align":"center","padding-right":"10px","padding-left":"10px"})),
-                        dbc.NavItem(dbc.NavLink("Analysis", href="/analysis",style={'font-family':'nudista-web",Helvetica,Arial,sans-serif','color':'#000000'})),
+                        dbc.NavItem(dbc.NavLink("More Detail", href="/analysis",style={'font-family':'nudista-web",Helvetica,Arial,sans-serif','color':'#000000'})),
                         dbc.NavItem(html.A(style={"font-size":"25px","text-align":"center","padding-right":"10px","padding-left":"10px"})),
                     ],brand='Agilrio',brand_style={'font-size':'25px','font-family':'nudista-web",Helvetica,Arial,sans-serif'},expand='lg',fluid = True,className='purple-gradient',style={'font-size':'25px','font-family':'nudista-web",Helvetica,Arial,sans-serif','color':'#000000'}),
                 ]),
