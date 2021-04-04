@@ -27,19 +27,7 @@ layout = html.Div([
 
                                 ]),
                                 html.Br(),
-                                dbc.Row([
-                                    dbc.Col([
-                                        dbc.Button('Formula', color = 'primary',id='formula_sma'),
-                                        dbc.Collapse([
-                                            html.Br(),
-                                            dbc.Card([
-                                                dbc.CardBody([
-                                                    html.H1('Formula will come here'),
-                                                ]),
-                                            ]),
-                                        ],id='sma_collapse'),
-                                    ]),
-                                ]),
+
                             ]),
                         ]),
                     ],style={'background-color':'#CCD7EA'},),
@@ -63,20 +51,7 @@ layout = html.Div([
                                         ]),
                                     ]),
                                 ]),
-                                html.Br(),
-                                dbc.Row([
-                                    dbc.Col([
-                                        dbc.Button('Formula', color = 'primary',id='formula_rsi'),
-                                        dbc.Collapse([
-                                            html.Br(),
-                                            dbc.Card([
-                                                dbc.CardBody([
-                                                    html.H1('Formula will come here'),
-                                                ]),
-                                            ]),
-                                        ],id='rsi_collapse'),
-                                    ]),
-                                ]),
+                                html.Br()
                             ]),
                         ]),
                     ],style={'background-color':'#CCD7EA'},),
@@ -104,21 +79,9 @@ layout = html.Div([
                                     ]),
                                 ]),
                                 html.Br(),
-
                                 html.Br(),
-                                dbc.Row([
-                                    dbc.Col([
-                                        dbc.Button('Formula', color = 'primary',id='formula_apo'),
-                                        dbc.Collapse([
-                                            html.Br(),
-                                            dbc.Card([
-                                                dbc.CardBody([
-                                                    html.H1('Formula will come here'),
-                                                ]),
-                                            ]),
-                                        ],id='apo_collapse'),
-                                    ]),
-                                ]),
+                                html.Br(),
+                                html.Br(),
                             ]),
                         ]),
                     ],style={'background-color':'#CCD7EA'},),
@@ -149,19 +112,6 @@ layout = html.Div([
                                 html.Br(),
                                 html.Br(),
                                 html.Br(),
-                                dbc.Row([
-                                    dbc.Col([
-                                        dbc.Button('Formula', color = 'primary',id='formula_bbs'),
-                                        dbc.Collapse([
-                                            html.Br(),
-                                            dbc.Card([
-                                                dbc.CardBody([
-                                                    html.H1('Formula will come here'),
-                                                ]),
-                                            ]),
-                                        ],id='bbs_collapse'),
-                                    ]),
-                                ]),
                             ]),
                         ]),
                     ],style={'background-color':'#CCD7EA'},),
@@ -186,19 +136,6 @@ layout = html.Div([
                                     ]),
                                 ]),
                                 html.Br(),
-                                dbc.Row([
-                                    dbc.Col([
-                                        dbc.Button('Formula', color = 'primary',id='formula_aroon'),
-                                        dbc.Collapse([
-                                            html.Br(),
-                                            dbc.Card([
-                                                dbc.CardBody([
-                                                    html.H1('Formula will come here'),
-                                                ]),
-                                            ]),
-                                        ],id='aroon_collapse'),
-                                    ]),
-                                ]),
                             ]),
                         ]),
                     ],style={'background-color':'#CCD7EA'},),
@@ -229,19 +166,6 @@ layout = html.Div([
                                 html.Br(),
 
                                 html.Br(),
-                                dbc.Row([
-                                    dbc.Col([
-                                        dbc.Button('Formula', color = 'primary',id='formula_ema'),
-                                        dbc.Collapse([
-                                            html.Br(),
-                                            dbc.Card([
-                                                dbc.CardBody([
-                                                    html.H1('Formula will come here'),
-                                                ]),
-                                            ]),
-                                        ],id='ema_collapse'),
-                                    ]),
-                                ]),
                             ]),
                         ]),
                     ],style={'background-color':'#CCD7EA'},),
@@ -270,19 +194,6 @@ layout = html.Div([
                                     ]),
                                 ]),
                                 html.Br(),
-                                dbc.Row([
-                                    dbc.Col([
-                                        dbc.Button('Formula', color = 'primary',id='formula_ma'),
-                                        dbc.Collapse([
-                                            html.Br(),
-                                            dbc.Card([
-                                                dbc.CardBody([
-                                                    html.H1('Formula will come here'),
-                                                ]),
-                                            ]),
-                                        ],id='ma_collapse'),
-                                    ]),
-                                ]),
                             ]),
                         ]),
                     ],style={'background-color':'#CCD7EA'},),
@@ -307,19 +218,6 @@ layout = html.Div([
                                     ]),
                                 ]),
                                 html.Br(),
-                                dbc.Row([
-                                    dbc.Col([
-                                        dbc.Button('Formula', color = 'primary',id='formula_cci'),
-                                        dbc.Collapse([
-                                            html.Br(),
-                                            dbc.Card([
-                                                dbc.CardBody([
-                                                    html.H1('Formula will come here'),
-                                                ]),
-                                            ]),
-                                        ],id='cci_collapse'),
-                                    ]),
-                                ]),
                             ]),
                         ]),
                     ],style={'background-color':'#CCD7EA'},),
@@ -350,19 +248,6 @@ layout = html.Div([
                                 html.Br(),
                                 html.Br(),
                                 html.Br(),
-                                dbc.Row([
-                                    dbc.Col([
-                                        dbc.Button('Formula', color = 'primary',id='formula_cmo'),
-                                        dbc.Collapse([
-                                            html.Br(),
-                                            dbc.Card([
-                                                dbc.CardBody([
-                                                    html.H1('Formula will come here'),
-                                                ]),
-                                            ]),
-                                        ],id='cmo_collapse'),
-                                    ]),
-                                ]),
                             ]),
                         ]),
                     ],style={'background-color':'#CCD7EA'},),
@@ -391,19 +276,6 @@ layout = html.Div([
                                     ]),
                                 ]),
                                 html.Br(),
-                                dbc.Row([
-                                    dbc.Col([
-                                        dbc.Button('Formula', color = 'primary',id='formula_macd'),
-                                        dbc.Collapse([
-                                            html.Br(),
-                                            dbc.Card([
-                                                dbc.CardBody([
-                                                    html.H1('Formula will come here'),
-                                                ]),
-                                            ]),
-                                        ],id='macd_collapse'),
-                                    ]),
-                                ]),
                             ]),
                         ]),
                     ],style={'background-color':'#CCD7EA'},),
@@ -428,19 +300,6 @@ layout = html.Div([
                                     ]),
                                 ]),
                                 html.Br(),
-                                dbc.Row([
-                                    dbc.Col([
-                                        dbc.Button('Formula', color = 'primary',id='formula_stoch'),
-                                        dbc.Collapse([
-                                            html.Br(),
-                                            dbc.Card([
-                                                dbc.CardBody([
-                                                    html.H1('Formula will come here'),
-                                                ]),
-                                            ]),
-                                        ],id='stoch_collapse'),
-                                    ]),
-                                ]),
                             ]),
                         ]),
                     ],style={'background-color':'#CCD7EA'},),
@@ -469,19 +328,7 @@ layout = html.Div([
                                 ]),
 
                                 html.Br(),
-                                dbc.Row([
-                                    dbc.Col([
-                                        dbc.Button('Formula', color = 'primary',id='formula_ad'),
-                                        dbc.Collapse([
-                                            html.Br(),
-                                            dbc.Card([
-                                                dbc.CardBody([
-                                                    html.H1('Formula will come here'),
-                                                ]),
-                                            ]),
-                                        ],id='ad_collapse'),
-                                    ]),
-                                ]),
+                                
                             ]),
                         ]),
                     ],style={'background-color':'#CCD7EA'},),

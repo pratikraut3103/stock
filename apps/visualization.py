@@ -877,11 +877,18 @@ def update_executives(value):
                 'Title' :['Chief Financial Officer & Executive Vice President', 'CFO-Operating Systems Group','Chief Financial Officer-Online Services Division','Chief Technology Officer & Executive VP','COO & VP-Experiences & Devices Group','Chief Executive Officer & Non-Independent Director']
             }
         )
-    else:
+    elif value == 'TSLA':
         info = pd.DataFrame(
             {
-                'Name' :['Shawrya Shetty','Pratik Raut'],
-                'Title' :['Chief Executive Officer ','N/A']
+                'Name' :['Elon Reeve Musk],
+                'Title' :['Technoking of Tesla']
+            }
+        )
+    elif value == 'INFY':
+        info = pd.DataFrame(
+            {
+                'Name' :['Anand Swaminathan','Jayesh Sanghrajka','Nilanjan Roy','Ravi Kumar S.','Salil S.','U. B. Pravin Rao'],
+                'Title' :['Executive VP-Communications, Media & Technology','Executive VP & Deputy Chief Financial Officer','Co-President & Deputy Chief Operating Officer','Executive Officer', 'MD & Executive Director','Chief Operating Officer & Executive Director']
             }
         )
     return dbc.Table.from_dataframe(info)
