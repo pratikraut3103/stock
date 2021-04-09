@@ -35,6 +35,9 @@ layout = html.Div([
                                 dcc.Loading(children=[dcc.Graph(id='o_p_graph',figure=go.Figure({
 
                                 }))],type='graph',fullscreen=True),
+                                html.Div([
+                                    html.H1(id='tom_value')
+                                ])
                             ]),
                         ],style={'background-color':'#CCD7EA'}),
                     ],width={'size':8}),
@@ -245,3 +248,59 @@ def model_load1(value):
 
     figure.update_layout(xaxis_rangeslider_visible=False,paper_bgcolor='#CCD7EA',plot_bgcolor = '#CCD7EA')
     return  figure
+
+@app.callback(Output(component_id="tom_value",component_property="children")
+            ,Input(component_id="search_box",component_property="value"))
+
+def y_func(value):
+    apple_model = keras.models.load_model(r".\machinelearning_models\apple_model.h5")
+    amd_model = keras.models.load_model(r".\machinelearning_models\amd_model.h5")
+    facebook_model = keras.models.load_model(r".\machinelearning_models\facebook_model.h5")
+    ibm_model = keras.models.load_model(r".\machinelearning_models\IBM_model.h5")
+    infy_model = keras.models.load_model(r".\machinelearning_models\infy_model.h5")
+    kodk_model = keras.models.load_model(r".\machinelearning_models\kodk_model.h5")
+    msft_model = keras.models.load_model(r".\machinelearning_models\msft_model.h5")
+    sbux_model = keras.models.load_model(r".\machinelearning_models\sbux_model.h5")
+    tsla_model = keras.models.load_model(r".\machinelearning_models\tsla_model.h5")
+    ttm_model = keras.models.load_model(r".\machinelearning_models\ttm_model.h5")
+    twtr_model = keras.models.load_model(r".\machinelearning_models\twtr_model.h5")
+    value = value.upper()
+    if value == "AAPL":
+        model = apple_model
+    if value == "AMD":
+        model = amd_model
+    if value == "FB":
+        model = facebook_model
+    if value == "IBM":
+        model = ibm_model
+    if value == "INFY":
+        model = infy_model
+    if value == "KODK":
+        model = kodk_model
+    if value == "MSFT":
+        model = msft_model
+    if value == "SBUX":
+        model = sbux_model
+    if value == "TSLA":
+        model = tsla_model
+    if value == "TTM":
+        model =ttm_model
+    if value == "TWTR":
+        model = twtr_model
+    df = pd.read_excel(f".\\data\\{value}.xlsx")
+    data = df.filter(["close"])
+    dataset = data.values
+    scaler = MinMaxScaler(feature_range=(0,1))
+    scaled_data = scaler.fit_transform(dataset)
+    scaled_data = scaled_data[-100:,:]
+    x_test = []
+    for i in range(70,len(scaled_data)):
+        x_test.append(scaled_data[i-70:i,0])
+    x_test = np.array(x_test)
+    x_test=np.reshape(x_test,(x_test.shape[0],x_test.shape[1],1))
+    predictions = model.predict(x_test)
+    predictions = scaler.inverse_transform(predictions)
+    predictions = predictions[-16][0]
+    print(predictions)
+    message = f"Tommorow's Price Would be {predictions}"
+    return message

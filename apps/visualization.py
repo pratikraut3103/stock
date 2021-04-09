@@ -877,16 +877,30 @@ def update_executives(value):
                 'Title' :['Chief Financial Officer & Executive Vice President', 'CFO-Operating Systems Group','Chief Financial Officer-Online Services Division','Chief Technology Officer & Executive VP','COO & VP-Experiences & Devices Group','Chief Executive Officer & Non-Independent Director']
             }
         )
+    elif value == 'TSLA':
+        info = pd.DataFrame(
+            {
+                'Name' :['Elon Reeve Musk'],
+                'Title' :['Technoking of Tesla']
+            }
+        )
+    elif value == 'INFY':
+        info = pd.DataFrame(
+            {
+                'Name' :['Anand Swaminathan','Jayesh Sanghrajka','Nilanjan Roy','Ravi Kumar S.','Salil S.','U. B. Pravin Rao'],
+                'Title' :['Executive VP-Communications, Media & Technology','Executive VP & Deputy Chief Financial Officer','Co-President & Deputy Chief Operating Officer','Executive Officer', 'MD & Executive Director','Chief Operating Officer & Executive Director']
+            }
+        )
+
     else:
         info = pd.DataFrame(
             {
-                'Name' :['Shawrya Shetty','Pratik Raut'],
-                'Title' :['Chief Executive Officer ','N/A']
+                'Name' :['Amy E. Hood','Bill Duff',"David M. O'Hara",'James Kevin Scott',"Kirk Koenigsbauer","Satya Nadella"],
+                'Title' :['Chief Financial Officer & Executive Vice President', 'CFO-Operating Systems Group','Chief Financial Officer-Online Services Division','Chief Technology Officer & Executive VP','COO & VP-Experiences & Devices Group','Chief Executive Officer & Non-Independent Director']
             }
         )
+
     return dbc.Table.from_dataframe(info)
-
-
 @app.callback(Output(component_id='valuation-measure',component_property='children'),
             Input(component_id='search_box',component_property='value')
 )

@@ -2,11 +2,15 @@ import alpha_vantage
 import time
 from alpha_vantage.timeseries import TimeSeries
 import pandas as pd
+from datetime import datetime,timedelta
 class data_pulling:
     def __init__(self):
         self.api_key = 'MNTZV7K3L1FTVL7C'
         self.ts = TimeSeries(key=self.api_key,output_format='Pandas')
-        self.date1 = '2021-01-21'
+        now = datetime.now()
+        yest_day = now + timedelta(days=-1)
+        yest_day = yest_day.strftime('%Y-%m-%d')
+        self.date1 = yest_day
 
     def calculation(self):
         for name in ['AAPL','ABT','AMD','FB','IBM','INFY','KODK','MSFT','SBUX','TSLA','TTM','TWTR']:
