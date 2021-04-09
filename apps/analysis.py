@@ -155,7 +155,7 @@ class Data:
         inst = self.Ticker.institutional_holders
         return inst
     def gat_option(self):
-        opt = self.Ticker.option_chain('2021-04-01')
+        opt = self.Ticker.option_chain('2021-04-09')
         return opt
     # def downlod(self,start,end,ticker):
     #     dataa = yf.downlod(ticker,start=start,end=end)
