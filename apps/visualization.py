@@ -410,6 +410,7 @@ def update(n):
     '''
     c = DataPulling()
     apple_price,apple_change_rate,amazon_price,amazon_change_rate,microsoft_price,microsoft_change_rate,nasdaq_price,nasdaq_change_rate,apple_color_value,amazon_color_value,microsoft_color_value,nasdaq_color_value = c.company_pull()
+    print('my valus ',apple_price,apple_change_rate,amazon_price,amazon_change_rate,microsoft_price,microsoft_change_rate,nasdaq_price,nasdaq_change_rate,apple_color_value,amazon_color_value,microsoft_color_value,nasdaq_color_value)
     company_card = dbc.Row([
         dbc.Col([
             dbc.Card([

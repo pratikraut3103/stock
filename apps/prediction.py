@@ -302,5 +302,5 @@ def y_func(value):
     predictions = scaler.inverse_transform(predictions)
     predictions = predictions[-16][0]
     print(predictions)
-    message = f"Tommorow's price would be {predictions}"
+    message = f"Tommorow's Price Would be {predictions}"
     return message
